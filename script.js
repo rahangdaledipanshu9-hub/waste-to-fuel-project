@@ -12,9 +12,8 @@ let current = "";
 sections.forEach(section => {
 
 const sectionTop = section.offsetTop;
-const sectionHeight = section.clientHeight;
 
-if(pageYOffset >= sectionTop - 200){
+if(window.scrollY >= sectionTop - 200){
 current = section.getAttribute("id");
 }
 
@@ -37,7 +36,7 @@ link.classList.add("active");
 SCROLL REVEAL ANIMATION
 ================================*/
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
 
 entries.forEach(entry => {
 
@@ -49,14 +48,11 @@ entry.target.classList.add("show");
 
 });
 
-const hiddenElements = document.querySelectorAll(".section");
-
-hiddenElements.forEach(el => observer.observe(el));
-
+document.querySelectorAll(".section").forEach(el => observer.observe(el));
 
 
 /* ===============================
-ANIMATED PERFORMANCE COUNTERS
+PERFORMANCE COUNTERS
 ================================*/
 
 const counters = document.querySelectorAll(".counter");
@@ -67,7 +63,7 @@ counter.innerText = "0";
 
 const updateCounter = () => {
 
-const target = +counter.getAttribute("data-target");
+const target = +counter.dataset.target;
 const current = +counter.innerText;
 
 const increment = target / 150;
@@ -92,12 +88,10 @@ updateCounter();
 
 
 /* ===============================
-REACTOR PIPELINE INTERACTION
+PIPELINE HOVER EFFECT
 ================================*/
 
-const stages = document.querySelectorAll(".stage");
-
-stages.forEach(stage => {
+document.querySelectorAll(".stage").forEach(stage => {
 
 stage.addEventListener("mouseenter", () => {
 
@@ -112,38 +106,6 @@ stage.style.transform = "scale(1)";
 stage.style.background = "#2563eb";
 
 });
-
-});
-
-
-/* ===============================
-IMAGE / DIAGRAM MODAL VIEWER
-================================*/
-
-const images = document.querySelectorAll(".diagram");
-
-const modal = document.createElement("div");
-modal.classList.add("modal");
-
-const modalImg = document.createElement("img");
-modal.appendChild(modalImg);
-
-document.body.appendChild(modal);
-
-images.forEach(img => {
-
-img.addEventListener("click", () => {
-
-modal.style.display = "flex";
-modalImg.src = img.src;
-
-});
-
-});
-
-modal.addEventListener("click", () => {
-
-modal.style.display = "none";
 
 });
 
@@ -165,24 +127,5 @@ const docHeight = document.body.scrollHeight - window.innerHeight;
 const progress = (scrollTop / docHeight) * 100;
 
 progressBar.style.width = progress + "%";
-
-});
-
-
-/* ===============================
-EXPANDABLE TECHNICAL DETAILS
-================================*/
-
-const expandBtns = document.querySelectorAll(".expand-btn");
-
-expandBtns.forEach(btn => {
-
-btn.addEventListener("click", () => {
-
-const content = btn.nextElementSibling;
-
-content.classList.toggle("open");
-
-});
 
 });
