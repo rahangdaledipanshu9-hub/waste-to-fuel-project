@@ -1,221 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+/* NAVBAR ACTIVE SECTION */
 
-<head>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+window.addEventListener("scroll", () => {
 
-<title>Hydrothermal Waste Conversion System</title>
+let current = "";
 
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+sections.forEach(section => {
 
-</head>
+const sectionTop = section.offsetTop;
 
-<body>
+if(window.scrollY >= sectionTop - 200){
+current = section.getAttribute("id");
+}
 
+});
 
-<nav class="navbar">
+navLinks.forEach(link => {
 
-<div class="logo">Waste Conversion Reactor</div>
+link.classList.remove("active");
 
-<ul class="nav-links">
-<li><a href="#problem">Problem</a></li>
-<li><a href="#solution">Solution</a></li>
-<li><a href="#process">Process</a></li>
-<li><a href="#simulator">Simulator</a></li>
-<li><a href="#metrics">Performance</a></li>
-<li><a href="#team">Team</a></li>
-</ul>
+if(link.getAttribute("href") === "#" + current){
+link.classList.add("active");
+}
 
-</nav>
+});
 
+});
 
 
-<header class="hero">
+/* SCROLL REVEAL */
 
-<h1>Mixed Waste → Fuel Conversion System</h1>
+const observer = new IntersectionObserver(entries => {
 
-<p>
-A single-reactor hydrothermal platform that converts unsorted municipal waste
-into fuels and chemical feedstocks.
-</p>
+entries.forEach(entry => {
 
-</header>
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
 
+});
 
+});
 
-<section id="problem" class="section">
+document.querySelectorAll(".section").forEach(el => observer.observe(el));
 
-<h2>Global Waste Problem</h2>
 
-<div class="problem-grid">
+/* COUNTERS */
 
-<div class="problem-card">
-<h3>Food Waste</h3>
-<p>High moisture organic waste that decomposes in landfills.</p>
-</div>
+const counters = document.querySelectorAll(".counter");
 
-<div class="problem-card">
-<h3>Textile Waste</h3>
-<p>Cellulose and polyester materials difficult to recycle.</p>
-</div>
+counters.forEach(counter => {
 
-<div class="problem-card">
-<h3>Plastic Waste</h3>
-<p>Contaminated plastics that conventional recycling rejects.</p>
-</div>
+counter.innerText = "0";
 
-</div>
+const updateCounter = () => {
 
-</section>
+const target = +counter.dataset.target;
+const current = +counter.innerText;
 
+const increment = target / 150;
 
+if(current < target){
 
-<section id="solution" class="section dark">
+counter.innerText = Math.ceil(current + increment);
 
-<h2>Proposed Technology</h2>
+setTimeout(updateCounter,15);
 
-<p class="center-text">
+}else{
 
-The proposed reactor eliminates preprocessing by converting mixed waste
-streams directly into chemical resources using hydrothermal liquefaction.
+counter.innerText = target;
 
-</p>
+}
 
-<div class="features">
+};
 
-<div class="feature">
-<h3>No Sorting</h3>
-<p>Mixed waste can be processed directly.</p>
-</div>
+updateCounter();
 
-<div class="feature">
-<h3>No Drying</h3>
-<p>Wet organic waste improves reaction chemistry.</p>
-</div>
+});
 
-<div class="feature">
-<h3>Energy Recovery</h3>
-<p>Heat exchangers recycle process energy.</p>
-</div>
 
-</div>
+/* PIPELINE HOVER EFFECT */
 
-</section>
+document.querySelectorAll(".stage").forEach(stage => {
 
+stage.addEventListener("mouseenter", () => {
 
+stage.style.transform = "scale(1.1)";
+stage.style.background = "#16a34a";
 
-<section id="process" class="section">
+});
 
-<h2>Reactor Conversion Pipeline</h2>
+stage.addEventListener("mouseleave", () => {
 
-<div class="pipeline">
+stage.style.transform = "scale(1)";
+stage.style.background = "#2563eb";
 
-<div class="stage">
-<h4>Waste Input</h4>
-</div>
+});
 
-<div class="arrow">→</div>
-
-<div class="stage">
-<h4>Hydrothermal Reactor</h4>
-</div>
-
-<div class="arrow">→</div>
-
-<div class="stage">
-<h4>Chemical Breakdown</h4>
-</div>
-
-<div class="arrow">→</div>
-
-<div class="stage">
-<h4>Fuel + Chemicals</h4>
-</div>
-
-</div>
-
-</section>
-
-
-
-<section id="simulator" class="section dark">
-
-<h2>Digital Reactor Simulator</h2>
-
-<p class="center-text">
-
-We developed a digital reactor simulator that predicts oil yield,
-gas production and biochar formation depending on catalyst loading,
-temperature, reaction time and feedstock mass.
-
-</p>
-
-<a href="https://rahangdaledipanshu9-hub.github.io/pyrolysis-reactor-calculator/"
-target="_blank"
-class="sim-button">
-
-Launch Reactor Simulation
-
-</a>
-
-</section>
-
-
-
-<section id="metrics" class="section dark">
-
-<h2>System Performance</h2>
-
-<div class="metrics">
-
-<div class="metric">
-<span class="counter" data-target="95">0</span>
-<p>% Conversion</p>
-</div>
-
-<div class="metric">
-<span class="counter" data-target="85">0</span>
-<p>% Fuel Yield</p>
-</div>
-
-<div class="metric">
-<span class="counter" data-target="75">0</span>
-<p>% Energy Recovery</p>
-</div>
-
-</div>
-
-</section>
-
-
-
-<section id="team" class="section">
-
-<h2>Research Team</h2>
-
-<div class="team">
-
-<div class="member">Dipanshu Rahangdale</div>
-<div class="member">Chaitanya Satpute</div>
-<div class="member">Bhargav Raikar</div>
-<div class="member">Prajakta Lanke</div>
-
-</div>
-
-</section>
-
-
-
-<footer>
-
-<p>Hydrothermal Waste Conversion Project</p>
-
-<p>Contact: rahangdaledipanshu9@gmail.com</p>
-
-</footer>
-
-</body>
-</html>
+});
