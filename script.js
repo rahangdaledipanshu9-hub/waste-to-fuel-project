@@ -12,7 +12,9 @@ sections.forEach(section => {
 const sectionTop = section.offsetTop;
 
 if(window.scrollY >= sectionTop - 200){
+
 current = section.getAttribute("id");
+
 }
 
 });
@@ -22,7 +24,9 @@ navLinks.forEach(link => {
 link.classList.remove("active");
 
 if(link.getAttribute("href") === "#" + current){
+
 link.classList.add("active");
+
 }
 
 });
@@ -30,43 +34,25 @@ link.classList.add("active");
 });
 
 
-/* SCROLL REVEAL */
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-
-});
-
-});
-
-document.querySelectorAll(".section").forEach(el => observer.observe(el));
-
-
-/* COUNTERS */
+/* PERFORMANCE COUNTERS */
 
 const counters = document.querySelectorAll(".counter");
 
 counters.forEach(counter => {
 
-counter.innerText = "0";
-
-const updateCounter = () => {
+let count = 0;
 
 const target = +counter.dataset.target;
-const current = +counter.innerText;
 
-const increment = target / 150;
+const update = () => {
 
-if(current < target){
+count += target / 100;
 
-counter.innerText = Math.ceil(current + increment);
+if(count < target){
 
-setTimeout(updateCounter,15);
+counter.innerText = Math.floor(count);
+
+requestAnimationFrame(update);
 
 }else{
 
@@ -76,27 +62,20 @@ counter.innerText = target;
 
 };
 
-updateCounter();
+update();
 
 });
 
 
-/* PIPELINE HOVER EFFECT */
+/* SCROLL PROGRESS BAR */
 
-document.querySelectorAll(".stage").forEach(stage => {
+window.addEventListener("scroll", () => {
 
-stage.addEventListener("mouseenter", () => {
+const scrollTop = window.scrollY;
+const docHeight = document.body.scrollHeight - window.innerHeight;
 
-stage.style.transform = "scale(1.1)";
-stage.style.background = "#16a34a";
+const progress = (scrollTop / docHeight) * 100;
 
-});
-
-stage.addEventListener("mouseleave", () => {
-
-stage.style.transform = "scale(1)";
-stage.style.background = "#2563eb";
-
-});
+document.querySelector(".progress-bar").style.width = progress + "%";
 
 });
