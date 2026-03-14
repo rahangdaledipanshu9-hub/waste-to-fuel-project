@@ -1,50 +1,88 @@
+/* Reset */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
+
+/* Body */
+
 body{
 font-family: Arial, Helvetica, sans-serif;
 background:#f4f6f9;
 color:#333;
+line-height:1.6;
 }
+
+
+/* Header */
 
 header{
 background:#1f2d3d;
 color:white;
 text-align:center;
-padding:25px;
+padding:40px 20px;
 }
 
 header h1{
-margin-bottom:5px;
+font-size:32px;
+margin-bottom:10px;
 }
 
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
-margin-top:30px;
+header p{
+font-size:18px;
+color:#dcdcdc;
 }
 
-/* Dashboard cards */
+
+/* Sections */
+
+.section{
+background:white;
+max-width:1000px;
+margin:30px auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section h2{
+margin-bottom:15px;
+color:#2c3e50;
+}
+
+.section p{
+margin-bottom:15px;
+}
+
+.section ul{
+margin-left:20px;
+}
+
+.section li{
+margin-bottom:8px;
+}
+
+
+/* Cards (statistics section) */
 
 .cards{
 display:flex;
 gap:20px;
 flex-wrap:wrap;
-margin-bottom:40px;
+margin-top:20px;
 }
 
 .card{
-background:white;
 flex:1;
 min-width:200px;
+background:#f8f9fb;
 padding:20px;
 border-radius:10px;
 text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
@@ -53,8 +91,8 @@ transform:translateY(-5px);
 }
 
 .card h3{
+color:#555;
 margin-bottom:10px;
-color:#666;
 }
 
 .card h2{
@@ -62,38 +100,14 @@ color:#27ae60;
 font-size:28px;
 }
 
-/* Table */
-
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
-
-th,td{
-padding:12px;
-text-align:center;
-border-bottom:1px solid #ddd;
-}
-
-th{
-background:#34495e;
-color:white;
-}
-
-tr:hover{
-background:#f2f2f2;
-}
 
 /* Footer */
 
 footer{
 text-align:center;
+padding:25px;
 margin-top:40px;
-padding:20px;
-color:#777;
+background:#1f2d3d;
+color:#ccc;
 font-size:14px;
 }
