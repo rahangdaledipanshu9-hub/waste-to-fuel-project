@@ -1,54 +1,188 @@
-/* PIPELINE INTERACTION */
+/* ===============================
+NAVBAR ACTIVE SECTION
+================================*/
 
-const stages = document.querySelectorAll(".stage");
-const infoBox = document.querySelector(".stage-info");
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-stages.forEach(stage => {
+window.addEventListener("scroll", () => {
 
-stage.addEventListener("click", () => {
+let current = "";
 
-infoBox.innerText = stage.dataset.info;
+sections.forEach(section => {
 
-});
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
 
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-anchor.addEventListener("click", function(e){
-
-e.preventDefault();
-
-document.querySelector(this.getAttribute("href")).scrollIntoView({
-behavior: "smooth"
-});
+if(pageYOffset >= sectionTop - 200){
+current = section.getAttribute("id");
+}
 
 });
 
-});
-/* SCROLL ANIMATION */
+navLinks.forEach(link => {
 
-const sections = document.querySelectorAll(".section");
+link.classList.remove("active");
 
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-entry.target.style.opacity=1;
-entry.target.style.transform="translateY(0)";
+if(link.getAttribute("href") === "#" + current){
+link.classList.add("active");
 }
 
 });
 
 });
 
-sections.forEach(section=>{
 
-section.style.opacity=0;
-section.style.transform="translateY(40px)";
-section.style.transition="0.6s";
+/* ===============================
+SCROLL REVEAL ANIMATION
+================================*/
 
-observer.observe(section);
+const observer = new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+
+});
+
+});
+
+const hiddenElements = document.querySelectorAll(".section");
+
+hiddenElements.forEach(el => observer.observe(el));
+
+
+
+/* ===============================
+ANIMATED PERFORMANCE COUNTERS
+================================*/
+
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+
+counter.innerText = "0";
+
+const updateCounter = () => {
+
+const target = +counter.getAttribute("data-target");
+const current = +counter.innerText;
+
+const increment = target / 150;
+
+if(current < target){
+
+counter.innerText = Math.ceil(current + increment);
+
+setTimeout(updateCounter, 15);
+
+}else{
+
+counter.innerText = target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+
+/* ===============================
+REACTOR PIPELINE INTERACTION
+================================*/
+
+const stages = document.querySelectorAll(".stage");
+
+stages.forEach(stage => {
+
+stage.addEventListener("mouseenter", () => {
+
+stage.style.transform = "scale(1.1)";
+stage.style.background = "#16a34a";
+
+});
+
+stage.addEventListener("mouseleave", () => {
+
+stage.style.transform = "scale(1)";
+stage.style.background = "#2563eb";
+
+});
+
+});
+
+
+/* ===============================
+IMAGE / DIAGRAM MODAL VIEWER
+================================*/
+
+const images = document.querySelectorAll(".diagram");
+
+const modal = document.createElement("div");
+modal.classList.add("modal");
+
+const modalImg = document.createElement("img");
+modal.appendChild(modalImg);
+
+document.body.appendChild(modal);
+
+images.forEach(img => {
+
+img.addEventListener("click", () => {
+
+modal.style.display = "flex";
+modalImg.src = img.src;
+
+});
+
+});
+
+modal.addEventListener("click", () => {
+
+modal.style.display = "none";
+
+});
+
+
+/* ===============================
+SCROLL PROGRESS BAR
+================================*/
+
+const progressBar = document.createElement("div");
+progressBar.classList.add("progress-bar");
+
+document.body.appendChild(progressBar);
+
+window.addEventListener("scroll", () => {
+
+const scrollTop = window.scrollY;
+const docHeight = document.body.scrollHeight - window.innerHeight;
+
+const progress = (scrollTop / docHeight) * 100;
+
+progressBar.style.width = progress + "%";
+
+});
+
+
+/* ===============================
+EXPANDABLE TECHNICAL DETAILS
+================================*/
+
+const expandBtns = document.querySelectorAll(".expand-btn");
+
+expandBtns.forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+const content = btn.nextElementSibling;
+
+content.classList.toggle("open");
+
+});
 
 });
