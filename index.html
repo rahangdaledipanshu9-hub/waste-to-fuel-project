@@ -6,27 +6,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hydrothermal Waste Conversion System</title>
+<title>Waste Conversion Reactor</title>
 
 <link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
 
 </head>
 
-
 <body>
+
+<div class="progress-bar"></div>
 
 <nav class="navbar">
 
 <div class="logo">Waste Conversion Reactor</div>
 
 <ul class="nav-links">
+
 <li><a href="#problem">Problem</a></li>
 <li><a href="#solution">Solution</a></li>
 <li><a href="#process">Process</a></li>
 <li><a href="#simulator">Simulator</a></li>
 <li><a href="#metrics">Performance</a></li>
 <li><a href="#team">Team</a></li>
+
 </ul>
 
 </nav>
@@ -38,8 +40,8 @@
 <h1>Mixed Waste → Fuel Conversion System</h1>
 
 <p>
-A single-reactor hydrothermal platform that converts unsorted municipal waste
-into fuels and chemical feedstocks.
+A single-reactor hydrothermal platform converting mixed municipal waste
+into fuels and valuable chemical feedstocks.
 </p>
 
 </header>
@@ -50,21 +52,21 @@ into fuels and chemical feedstocks.
 
 <h2>Global Waste Problem</h2>
 
-<div class="problem-grid">
+<div class="card-container">
 
-<div class="problem-card">
+<div class="card">
 <h3>Food Waste</h3>
-<p>High moisture organic waste that decomposes in landfills.</p>
+<p>Organic waste decomposes and releases methane in landfills.</p>
 </div>
 
-<div class="problem-card">
+<div class="card">
 <h3>Textile Waste</h3>
-<p>Cellulose and polyester materials difficult to recycle.</p>
+<p>Polyester and cellulose textiles are difficult to recycle.</p>
 </div>
 
-<div class="problem-card">
+<div class="card">
 <h3>Plastic Waste</h3>
-<p>Contaminated plastics that conventional recycling rejects.</p>
+<p>Contaminated plastics are rejected from recycling plants.</p>
 </div>
 
 </div>
@@ -79,9 +81,131 @@ into fuels and chemical feedstocks.
 
 <p class="center-text">
 
-The proposed reactor eliminates preprocessing by converting mixed waste
-streams directly into chemical resources using hydrothermal liquefaction.
+Our reactor directly converts mixed waste streams into fuels using
+hydrothermal conversion, eliminating sorting and drying steps.
 
 </p>
 
-<div class="features
+<div class="features">
+
+<div class="feature">
+<h3>No Sorting</h3>
+<p>Mixed waste is processed directly.</p>
+</div>
+
+<div class="feature">
+<h3>No Drying</h3>
+<p>Wet waste enhances reaction chemistry.</p>
+</div>
+
+<div class="feature">
+<h3>Energy Recovery</h3>
+<p>Heat exchangers recycle process heat.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="process" class="section">
+
+<h2>Reactor Conversion Pipeline</h2>
+
+<div class="pipeline">
+
+<div class="stage">Waste Input</div>
+<div class="arrow">→</div>
+<div class="stage">Hydrothermal Reactor</div>
+<div class="arrow">→</div>
+<div class="stage">Chemical Breakdown</div>
+<div class="arrow">→</div>
+<div class="stage">Fuel Output</div>
+
+</div>
+
+</section>
+
+
+
+<section id="simulator" class="section dark">
+
+<h2>Digital Reactor Simulator</h2>
+
+<p class="center-text">
+
+We developed a digital reactor simulator predicting oil yield,
+gas formation, and biochar production based on reactor conditions.
+
+</p>
+
+<a href="https://rahangdaledipanshu9-hub.github.io/pyrolysis-reactor-calculator/"
+target="_blank"
+class="sim-button">
+
+Launch Reactor Simulation
+
+</a>
+
+</section>
+
+
+
+<section id="metrics" class="section">
+
+<h2>System Performance</h2>
+
+<div class="metrics">
+
+<div class="metric">
+<span class="counter" data-target="95">0</span>
+<p>% Conversion</p>
+</div>
+
+<div class="metric">
+<span class="counter" data-target="85">0</span>
+<p>% Fuel Yield</p>
+</div>
+
+<div class="metric">
+<span class="counter" data-target="75">0</span>
+<p>% Energy Recovery</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="team" class="section">
+
+<h2>Research Team</h2>
+
+<div class="team">
+
+<div class="member">Dipanshu Rahangdale</div>
+<div class="member">Chaitanya Satpute</div>
+<div class="member">Bhargav Raikar</div>
+<div class="member">Prajakta Lanke</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<p>Hydrothermal Waste Conversion Project</p>
+
+<p>Contact: rahangdaledipanshu9@gmail.com</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
