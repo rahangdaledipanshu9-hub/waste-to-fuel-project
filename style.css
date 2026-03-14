@@ -1,12 +1,22 @@
 body{
 
-font-family:Arial;
 margin:0;
-background:#f5f7fa;
+font-family:Arial;
+background:#f4f6f8;
 
 }
 
-/* NAVBAR */
+.progress-bar{
+
+position:fixed;
+top:0;
+left:0;
+height:5px;
+background:#22c55e;
+width:0%;
+z-index:1000;
+
+}
 
 .navbar{
 
@@ -15,6 +25,8 @@ justify-content:space-between;
 padding:15px 40px;
 background:#1e3a8a;
 color:white;
+position:sticky;
+top:0;
 
 }
 
@@ -33,24 +45,14 @@ text-decoration:none;
 
 }
 
-.nav-links a.active{
-
-border-bottom:2px solid #22c55e;
-
-}
-
-/* HERO */
-
 .hero{
 
+text-align:center;
+padding:120px 20px;
 background:linear-gradient(120deg,#0f172a,#1e3a8a);
 color:white;
-padding:120px 20px;
-text-align:center;
 
 }
-
-/* SECTIONS */
 
 .section{
 
@@ -66,9 +68,7 @@ color:white;
 
 }
 
-/* CARDS */
-
-.problem-grid{
+.card-container{
 
 display:flex;
 justify-content:center;
@@ -76,17 +76,15 @@ gap:30px;
 
 }
 
-.problem-card{
+.card{
 
 background:white;
-padding:20px;
+padding:25px;
 border-radius:10px;
 width:220px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 
 }
-
-/* FEATURES */
 
 .features{
 
@@ -95,8 +93,6 @@ justify-content:center;
 gap:40px;
 
 }
-
-/* PIPELINE */
 
 .pipeline{
 
@@ -109,37 +105,35 @@ gap:15px;
 
 .stage{
 
-padding:15px 25px;
 background:#2563eb;
 color:white;
+padding:15px 25px;
 border-radius:8px;
 transition:0.3s;
 
 }
 
-/* METRICS */
+.stage:hover{
+
+background:#16a34a;
+transform:scale(1.1);
+
+}
 
 .metrics{
 
 display:flex;
 justify-content:center;
 gap:40px;
+font-size:28px;
 
 }
-
-.metric{
-
-font-size:30px;
-
-}
-
-/* TEAM */
 
 .team{
 
 display:flex;
 justify-content:center;
-gap:30px;
+gap:25px;
 
 }
 
@@ -152,32 +146,23 @@ border-radius:8px;
 
 }
 
-/* SIM BUTTON */
-
 .sim-button{
 
 display:inline-block;
 margin-top:20px;
 padding:14px 30px;
-
-background:linear-gradient(135deg,#16a34a,#22c55e);
+background:#16a34a;
 color:white;
-font-weight:bold;
-
 border-radius:8px;
 text-decoration:none;
-
-transition:0.3s;
 
 }
 
 .sim-button:hover{
 
-transform:scale(1.05);
+background:#15803d;
 
 }
-
-/* FOOTER */
 
 footer{
 
